@@ -67,7 +67,9 @@ export default function App() {
       ScrollTrigger.create({ start: 0, end: 'max', onUpdate: updateNav, onRefresh: updateNav });
     }, root);
     let disposed = false;
-    document.fonts.ready.then(() => { if (!disposed) ScrollTrigger.refresh(); });
+    if (document.fonts && document.fonts.ready) {
+      document.fonts.ready.then(() => { if (!disposed) ScrollTrigger.refresh(); }).catch(() => {});
+    }
     return () => { disposed = true; mm.revert(); context.revert(); };
   }, []);
   async function copyEmail() {

@@ -19,6 +19,7 @@ export default function Sculpture() {
   const host = useRef(null);
   useEffect(() => {
     const el = host.current;
+    if (!el) return;
     let renderer;
     try { renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true }); }
     catch { return; }

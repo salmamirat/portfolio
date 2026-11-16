@@ -9,6 +9,7 @@ export default function usePinkRider() { useEffect(() => {
       const canvas = document.querySelector('#reveal');
       const cursor = document.querySelector('#cursor');
       const hintText = document.querySelector('#hintText');
+      if (!hero || !figure || !front || !canvas || !cursor || !hintText) return;
       const touchMQ = matchMedia('(hover: none), (pointer: coarse)');
       const reduceMQ = matchMedia('(prefers-reduced-motion: reduce)');
       let visible = true;
