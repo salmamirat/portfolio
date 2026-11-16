@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>SALMA MIRAT — Full Stack Developer · Pink Rider</title>
+  <meta name="description" content="SALMA MIRAT — Full Stack Developer. Hover to reveal the pink rider.">
+  <link rel="preload" as="image" href="https://i.postimg.cc/RqrTFWKm/901b9737-9ceb-4c5f-8838-8ef80e804649.png">
+  <link rel="preload" as="image" href="https://i.postimg.cc/PrTqYtys/2717cfaa-8564-4772-a85b-15f11ff435bd.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root { --bg:#fdeef3; --bg-2:#fbe3eb; --ink:#141114; --muted:#7a6870; --ghost:#d6c3ca; --accent:#ff7fab; --accent-ink:#ffffff; --gutter:clamp(16px, 2.4vw, 32px); }
+    * { box-sizing:border-box; margin:0; padding:0; }
+    html,body { height:100%; }
+    body { background:var(--bg); color:var(--ink); overflow-x:hidden; font-family:"Inter Tight",system-ui,-apple-system,"Segoe UI",sans-serif; -webkit-font-smoothing:antialiased; }
+    .nav { position:fixed; inset:0 0 auto 0; z-index:20; display:flex; align-items:center; justify-content:space-between; padding:var(--gutter); }
+    .brand { display:flex; align-items:center; gap:10px; text-decoration:none; color:var(--ink); font-weight:500; font-size:15px; letter-spacing:-0.01em; }
+    .brand-mark { width:34px; height:34px; border-radius:9px; background:var(--accent); display:grid; place-items:center; }
+    .brand-mark svg { width:18px; height:18px; }
+    .links { display:flex; align-items:center; gap:clamp(14px, 2vw, 28px); }
+    .links a { color:var(--muted); text-decoration:none; font-size:14px; transition:color .2s; }
+    .links a:hover { color:var(--ink); }
+    .links .cta { background:var(--accent); color:var(--accent-ink); font-weight:500; padding:10px 18px; border-radius:10px; display:inline-flex; gap:6px; align-items:center; transition:transform .2s, background .2s; }
+    .links .cta:hover { color:#fff; background:#ff6a9c; transform:translateY(-1px); }
+    .hero { position:relative; height:100vh; height:100svh; min-height:560px; overflow:hidden; touch-action:pan-y; cursor:none; background:radial-gradient(60% 55% at 50% 45%, #fff6f9 0%, rgba(255,246,249,0) 70%),linear-gradient(180deg,var(--bg) 0%,var(--bg-2) 100%); }
+    .marquees { position:absolute; left:0; right:0; top:50%; transform:translateY(-58%); z-index:1; pointer-events:none; user-select:none; display:flex; flex-direction:column; gap:clamp(4px,1.2vw,18px); }
+    .row { display:flex; width:max-content; white-space:nowrap; will-change:transform; }
+    .row span { font-size:clamp(54px,9.6vw,168px); line-height:1; letter-spacing:-0.035em; text-transform:uppercase; padding-right:0.3em; }
+    .row.ghost span { color:var(--ghost); font-weight:400; }
+    .row.solid span { color:var(--ink); font-weight:500; }
+    .row.ghost { animation:slideL 38s linear infinite; }
+    .row.solid { animation:slideR 32s linear infinite; }
+    @keyframes slideL { from { transform:translateX(0); } to { transform:translateX(-50%); } }
+    @keyframes slideR { from { transform:translateX(-50%); } to { transform:translateX(0); } }
+    .figure { position:absolute; left:50%; bottom:0; z-index:2; height:min(94svh,133vw); aspect-ratio:3/4; transform:translateX(-50%); pointer-events:none; }
+    .figure img,.figure canvas { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center bottom; display:block; }
+    .figure img { opacity:0; }
+    .figure canvas { opacity:0; transition:opacity .8s ease; }
+    .figure canvas.ready { opacity:1; }
+    .cursor { position:fixed; left:0; top:0; z-index:30; pointer-events:none; width:14px; height:14px; margin:-7px 0 0 -7px; border-radius:50%; background:var(--accent); opacity:0; transition:opacity .25s,width .2s,height .2s; }
+    .hero:hover ~ .cursor,.cursor.on { opacity:1; }
+    .hint { position:absolute; left:var(--gutter); bottom:var(--gutter); z-index:3; font-size:13px; color:var(--muted); display:flex; align-items:center; gap:8px; }
+    .hint i { width:8px; height:8px; border-radius:50%; background:var(--accent); }
+    .tag { position:absolute; right:var(--gutter); bottom:var(--gutter); z-index:3; font-size:12px; color:var(--ink); background:rgba(255,255,255,.7); backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px); padding:8px 12px; border-radius:999px; }
+    .sr-only { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip-path:inset(50%); white-space:nowrap; }
+    @media (max-width:720px) {
+      .links a:not(.cta) { display:none; }
+      .links .cta { padding:9px 14px; font-size:13px; }
+      .brand { font-size:14px; }
+      .brand-mark { width:30px; height:30px; border-radius:8px; }
+      .hero { cursor:auto; }
+      .marquees { transform:translateY(-62%); }
+      .figure { height:auto; width:min(160vw,64svh); }
+      .tag { display:none; }
+      .hint { left:50%; transform:translateX(-50%); bottom:18px; background:rgba(255,255,255,.75); padding:8px 12px; border-radius:999px; color:var(--ink); white-space:nowrap; }
+    }
+    @media (hover:none) { .cursor { display:none; } }
+    @media (prefers-reduced-motion:reduce) { .row { animation-duration:120s; } }
+  </style>
+</head>
+<body>
+  <header class="nav">
+    <a class="brand" href="#" aria-label="SALMA MIRAT, Full Stack Developer">
+      <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/></svg></span>
+      SALMA MIRAT
+    </a>
+    <!-- Replace these placeholder links with your portfolio destinations. -->
+    <nav class="links" aria-label="Main navigation">
+      <a href="#">Projects</a><a href="#">About</a><a href="#">Experience</a>
+      <a class="cta" href="#">Say hi! <span aria-hidden="true">↗</span></a>
+    </nav>
+  </header>
+  <section class="hero" id="hero" aria-label="Hover to reveal the pink rider">
+    <h1 class="sr-only">SALMA MIRAT — Full Stack Developer</h1>
+    <div class="marquees" aria-hidden="true">
+      <div class="row ghost"><span>Dream Ride Sparkle</span><span>Dream Ride Sparkle</span><span>Dream Ride Sparkle</span><span>Dream Ride Sparkle</span></div>
+      <div class="row solid"><span>Ride Pretty Stay Bolder</span><span>Ride Pretty Stay Bolder</span><span>Ride Pretty Stay Bolder</span><span>Ride Pretty Stay Bolder</span></div>
+    </div>
+    <div class="figure" id="figure">
+      <img id="front" alt="Young woman in a white ribbed top" src="https://i.postimg.cc/RqrTFWKm/901b9737-9ceb-4c5f-8838-8ef80e804649.png" fetchpriority="high">
+      <canvas id="reveal" aria-hidden="true"></canvas>
+    </div>
+    <p class="hint"><i aria-hidden="true"></i><span id="hintText">Move your cursor to suit up</span></p>
+    <span class="tag">Full Stack Developer · Pink Rider</span>
+  </section>
+  <div class="cursor" id="cursor" aria-hidden="true"></div>
+  <script>
+    (() => {
+      'use strict';
+      const hero = document.querySelector('#hero');
+      const figure = document.querySelector('#figure');
+      const front = document.querySelector('#front');
+      const canvas = document.querySelector('#reveal');
+      const cursor = document.querySelector('#cursor');
+      const hintText = document.querySelector('#hintText');
+      const touchMQ = matchMedia('(hover: none), (pointer: coarse)');
+      let coarse;
+      function syncTouch() {
+        coarse = touchMQ.matches;
+        hintText.textContent = coarse ? 'Drag to suit up' : 'Move your cursor to suit up';
+        cursor.classList.remove('on');
+      }
+      syncTouch();
+      touchMQ.addEventListener('change', syncTouch);
+      const mask = document.createElement('canvas');
+      const buf = document.createElement('canvas');
+      const ctx = canvas.getContext('2d');
+      const mctx = mask.getContext('2d');
+      const bctx = buf.getContext('2d');
+      let frontReady = false, backReady = false;
+      let W = 0, H = 0, dpr = 1;
+      let stamps = [], last = null, lastMove = performance.now();
+      let autoT = 0, autoLast = null;
+      const LIFE = 1100;
+      const back = new Image();
+      back.onload = () => { backReady = true; };
+      back.src = 'https://i.postimg.cc/PrTqYtys/2717cfaa-8564-4772-a85b-15f11ff435bd.png';
+      function loadedFront() { frontReady = true; canvas.classList.add('ready'); }
+      if (front.complete && front.naturalWidth) loadedFront();
+      else front.addEventListener('load', loadedFront, { once:true });
+      function resize() {
+        const r = figure.getBoundingClientRect();
+        dpr = Math.min(window.devicePixelRatio || 1, 2);
+        W = r.width; H = r.height;
+        for (const c of [canvas, mask, buf]) {
+          c.width = Math.round(W * dpr); c.height = Math.round(H * dpr);
+        }
+        stamps = []; last = null; autoLast = null;
+      }
+      resize();
+      window.addEventListener('load', resize);
+      window.addEventListener('resize', resize);
+      function addStamp(x, y, now) {
+        const base = Math.max(W, 260) * (coarse ? 0.15 : 0.12);
+        const n = 3 + Math.floor(Math.random() * 3);
+        const lobes = [];
+        for (let i = 0; i < n; i++) {
+          const angle = Math.random() * Math.PI * 2;
+          const distance = Math.random() * base * 0.45;
+          lobes.push({ dx:Math.cos(angle)*distance, dy:Math.sin(angle)*distance, r:base*(0.45+Math.random()*0.55) });
+        }
+        stamps.push({ x, y, t:now, lobes });
+      }
+      function pointerTo(clientX, clientY, now) {
+        const r = figure.getBoundingClientRect();
+        const x = clientX - r.left, y = clientY - r.top;
+        if (last) {
+          const distance = Math.hypot(x-last.x, y-last.y);
+          const count = Math.min(40, Math.ceil(distance / (Math.max(W,260)*0.04)));
+          for (let i = 1; i < count; i++) {
+            addStamp(last.x+(x-last.x)*i/count, last.y+(y-last.y)*i/count, now);
+          }
+        }
+        addStamp(x, y, now);
+        last = { x, y }; lastMove = now; autoLast = null;
+      }
+      hero.addEventListener('pointermove', e => {
+        pointerTo(e.clientX, e.clientY, performance.now());
+        cursor.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
+        cursor.classList.add('on');
+      });
+      hero.addEventListener('pointerleave', () => { last = null; cursor.classList.remove('on'); });
+      hero.addEventListener('pointerdown', e => pointerTo(e.clientX, e.clientY, performance.now()));
+      hero.addEventListener('pointercancel', () => { last = null; cursor.classList.remove('on'); });
+      hero.addEventListener('pointerup', () => { if (coarse) last = null; });
+      function autoWander(now) {
+        if (now-lastMove < 2500) return;
+        autoT += 0.016;
+        const x = W*(0.5+Math.sin(autoT*1.3)*0.28);
+        const y = H*(0.32+Math.sin(autoT*0.9+1)*0.22);
+        if (!autoLast || Math.hypot(x-autoLast.x,y-autoLast.y) > W*0.02) {
+          addStamp(x,y,now); autoLast = { x,y };
+        }
+      }
+      function drawCover(c, img) {
+        const scale = Math.max(canvas.width/img.naturalWidth,canvas.height/img.naturalHeight);
+        const width = img.naturalWidth*scale, height = img.naturalHeight*scale;
+        c.drawImage(img,(canvas.width-width)/2,canvas.height-height,width,height);
+      }
+      function render(now) {
+        if (coarse) autoWander(now);
+        stamps = stamps.filter(s => now-s.t < LIFE);
+        mctx.setTransform(dpr,0,0,dpr,0,0);
+        mctx.clearRect(0,0,mask.width/dpr,mask.height/dpr);
+        mctx.fillStyle = '#000';
+        for (const s of stamps) {
+          const k = 1-(now-s.t)/LIFE;
+          const scale = k < 0.75 ? k/0.75 : 1;
+          for (const lobe of s.lobes) {
+            mctx.beginPath();
+            mctx.arc(s.x+lobe.dx*scale,s.y+lobe.dy*scale,lobe.r*Math.pow(scale,0.8),0,Math.PI*2);
+            mctx.fill();
+          }
+        }
+        ctx.setTransform(1,0,0,1,0,0);
+        ctx.globalCompositeOperation = 'source-over';
+        ctx.clearRect(0,0,canvas.width,canvas.height);
+        if (frontReady) drawCover(ctx,front);
+        if (stamps.length) {
+          // Erase first: transparent areas of the rider must never expose the front.
+          ctx.globalCompositeOperation = 'destination-out';
+          ctx.drawImage(mask,0,0);
+          ctx.globalCompositeOperation = 'source-over';
+          if (backReady) {
+            bctx.setTransform(1,0,0,1,0,0);
+            bctx.globalCompositeOperation = 'source-over';
+            bctx.clearRect(0,0,buf.width,buf.height);
+            bctx.drawImage(mask,0,0);
+            bctx.globalCompositeOperation = 'source-in';
+            drawCover(bctx,back);
+            ctx.drawImage(buf,0,0);
+          }
+        }
+        requestAnimationFrame(render);
+      }
+      requestAnimationFrame(render);
+    })();
+  </script>
+</body>
+</html>
